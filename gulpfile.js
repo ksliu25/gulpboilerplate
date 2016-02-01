@@ -109,6 +109,21 @@ gulp.task('serve', ['css', 'js', 'images'], function() {
     gulp.watch('*.html').on('change', browserSync.reload);
 });
 
-//////
+////// BrowserSync all browsers
+
+gulp.task('serveall', ['css', 'js', 'images'], function() {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        },
+        browser: ["google chrome", "firefox", "safari"]
+    });
+
+    gulp.watch('dev/js/*.js', ['js']);
+    gulp.watch('dev/css/*.scss', ['css']);
+    gulp.watch('*.html').on('change', browserSync.reload);
+});
+
+////////
 
 gulp.task('default', ['js', 'css', 'images', 'watch']);
